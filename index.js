@@ -1,4 +1,10 @@
 const bombs=[];
+let gamePoints=0;
+let canPlay=true;
+function updateGamePoints(){
+ const gamePointsElement =document.getElementById("gamePoints")  ;
+ gamePointsElement.innerHTML="Game Points"+ gamePoints;
+}
 function addGrid(){
     const appElement=document.getElementById("app");
     for(let i=0;i<9;i++){
@@ -15,12 +21,17 @@ function addGrid(){
          column.setAttribute("index", index);
 
          column.addEventListener("click", function(){
+             if(canPlay){ 
          if(bombs.includes(index)){
              column.innerHTML="Bomb"
              column.style.backgroundColor ="red";
+             canPlay=false;
          }else{
              column.style.background="green";
+             gamePoints++;
+             updateGamePoints();
          }
+        }
          })
 
          row.appendChild(column);
