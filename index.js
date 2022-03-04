@@ -21,6 +21,7 @@ function addGrid(){
          column.setAttribute("index", index);
 
          column.addEventListener("click", function(){
+           
              if(canPlay){ 
          if(bombs.includes(index)){
              column.innerHTML="Bomb"
